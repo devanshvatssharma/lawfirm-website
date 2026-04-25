@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{%block title%}{%endblock%}</title>
+    {%block otherstuff%}{%endblock%}
+    {%block linkcss%}{%endblock%}
+</head>
+<body>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+    </nav>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% endif %}
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+    {%block linkjs%}{%endblock%}
+</body>
+</html>

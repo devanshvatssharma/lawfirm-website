@@ -1,0 +1,137 @@
+{%extends "base.html"%}
+{% load static %}
+
+
+{%block title%}Sterling & Associates | Premium Legal Counsel{%endblock%}
+
+
+{%block otherstuff%}<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+{%endblock%}
+
+
+{%block linkcss%}<link href="{%static "core/home.css"%}" rel='stylesheet'>{%endblock%}
+
+
+{%block content%}
+    <nav>
+        <div class="container">
+            <div class="container">
+    <div class="logo">
+        <a href="#home" class="logo-text">
+            <span>Devansh</span> & CO.
+        </a>
+    </div>
+    
+    </div>
+            <ul class="nav-links" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger" onclick="toggleMenu()">
+                <div></div><div></div><div></div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home">
+        <img src="{% static 'core/home.jpg' %}" alt="Law Firm Office" class="hero-bg-img">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <h1>Expertise When It Matters Most.</h1>
+            <p>Providing premium legal counsel for corporate and private interests.</p>
+            <a href="#contact" class="btn">Book a Consultation</a>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-flex">
+                <div class="about-image">
+                    <img src="{% static 'core/about.jpg' %}" alt="Our Attorney Team">
+                </div>
+                <div class="about-text">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Dedicated to Excellence</h2>
+                    <p>Sterling & Associates is a premier law firm specializing in complex litigation and high-value corporate transactions. We combine traditional values with modern legal strategies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section-padding" style="background: #fafafa;">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 50px; font-family: 'Playfair Display', serif; font-size: 2.5rem;">
+            Practice Areas
+        </h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-emoji">⚖️</div>
+                <h3>Corporate Law</h3>
+                <p>Guidance on mergers, contracts, and business formations with a focus on long-term growth.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-emoji">🏛️</div>
+                <h3>Litigation</h3>
+                <p>Strong representation in civil and commercial disputes to protect your professional interests.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-emoji">🤝</div>
+                <h3>Family Law</h3>
+                <p>Sensitive handling of matrimonial, custody, and estate matters with privacy and care.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px;">Get In Touch</h2>
+            <div class="contact-flex">
+                <div>
+                    <h3>Office Contact</h3>
+                    <p>1000 Premium Ave, Legal District</p>
+                    <p>Phone: +1 800 555 0199</p>
+                </div>
+                <form class="contact-form" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Your Name">
+                    <input type="email" name="email" placeholder="Your Email">
+                    <textarea name="message" placeholder="Your Case"></textarea>
+                    <button type="submit" class="btn">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Sterling & Associates. Legal Excellence Guaranteed.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+    const alert = document.querySelector('.alert');
+
+    if (alert) {
+        setTimeout(() => {
+            alert.style.opacity = "0";
+            alert.style.transition = "opacity 0.5s ease";
+
+            setTimeout(() => {
+                alert.remove();
+            }, 500);
+        }, 3000); // 3 seconds
+    }
+});
+    </script>
+{%endblock%}
